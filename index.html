@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Ropa y Calzado</title>
+    <style>
+       /* Estilos Generales */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+padding: 60px 20px 20px 20px;
+    background-color: #00796b; /* Cambiado a un verde más vibrante */
+    color: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+header .header-image img {
+    width: 150px; /* Ajusta el tamaño según sea necesario */
+    height: 150px; /* Mantén el mismo valor de altura y anchura para que sea circular */
+    border-radius: 50%; /* Esto hace que la imagen sea circular */
+    object-fit: cover;
+    margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+    border: 4px solid #fff; /* Añadido un borde blanco alrededor de la imagen */
+}
+
+header h1 {
+    font-size: 2.5em;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header-button {
+    margin-top: 20px;
+    background-color: #fff;
+    color: #00796b;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header-button:hover {
+    background-color: #00796b;
+    color: #fff;
+}
+
+/* Estilo de la Navegación */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #004d40; /* Cambiado a un verde más oscuro */
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+/* Estilo de las Secciones */
+section {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+p {
+    color: #666;
+    line-height: 1.6;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* Estilo de las Imágenes */
+.inicio-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.image-item {
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+}
+
+.image-item img {
+    width: 300px; /* Establece un ancho fijo para todas las imágenes */
+    height: 200px; /* Establece una altura fija para todas las imágenes */
+    object-fit: cover; /* Recorta la imagen para llenar el contenedor manteniendo las proporciones */
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.image-item:hover img {
+    transform: scale(1.08);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.image-item p {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    color: #007BFF;
+}
+
+/* Estilo del Formulario de Contacto */
+.contact-form, .contact-info {
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.contact-form button {
+    background-color: #00796b;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border-radius: 50px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
+
+.contact-form button:hover {
+    background-color: #004d40;
+    transform: scale(1.1);
+}
+
+/* Responsividad Mejorada */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .inicio-images .image-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .nosotros-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Animaciones Suaves */
+ nav {
+            background-color: #333;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 5px 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+            color: #ddd;
+            border-radius: 5px;
+        }
+
+        /* Estilos para la imagen principal */
+        .hero-image {
+            background-image: url('ruta-de-la-imagen.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efecto parallax */
+            height: 80vh; /* Ocupa el 80% de la pantalla */
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Superposición negra con transparencia */
+            z-index: 1;
+        }
+
+        .hero-image h1 {
+            position: relative;
+            z-index: 2;
+            font-size: 48px;
+            margin: 0;
+        }
+
+        /* Espaciado para el contenido después del nav */
+        .content {
+            padding-top: 100px; /* Ajusta según la altura del nav */
+        }
+/* Estilo de la imagen circular en el header */
+header .header-image img {
+    width: 150px; /* Ajusta el tamaño según sea necesario */
+    height: 150px; /* Mantén el mismo valor de altura y anchura para que sea circular */
+    border-radius: 50%; /* Esto hace que la imagen sea circular */
+    object-fit: cover;
+    margin-bottom: 10px; /* Espacio entre la imagen y el texto */
+    border: 4px solid #fff; /* Añadido un borde blanco alrededor de la imagen */
+
+
+    </style>
+</head>
+
+<body>
+    <header>
+    <div class="header-image">
+        <img src="img/yopi.jpeg" alt="Logo de la tienda">
+    </div>
+    <h1>TIENDA`S EMELIN</h1>
+</header>
+<nav>
+    
+    <a href="#inicio">Inicio</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#productos">Productos</a>
+    <a href="#blog">Blog</a>
+    <a href="#contactanos">Contáctanos</a>
+</nav>
+
+<section id="inicio">
+    <div class="intro-text">
+        <h1 align="center">Bienvenidos a Nuestra Tienda</h1>
+        <p align="center">Explora las últimas tendencias en moda para toda la familia.</p>
+        <h2 align="center">Tenis</h2>
+    </div>
+
+    <div class="inicio-images">
+        <div class="image-item">
+            <img src="img/zapatos.png" alt="Moda para Caballeros">
+            <p align="center">La comodidad en tus pies</p>
+        </div>
+        <div class="image-item">
+            <img src="img/zapatos1.png" alt="Moda para Caballeros">
+            <p align="center">Ideal para hacer deporte</p>
+        </div>
+        <div class="image-item">
+            <img src="img/zapatos3.jfif" alt="Moda para Caballeros">
+            <p align="center">Perfectos combinan con todo</p>
+        </div>
+        <div class="image-item">
+            <img src="img/zapatos5.jfif" alt="Moda para Caballeros">
+            <p align="center">Estilo perfecto para tus días diarios</p>
+        </div>
+        <div class="image-item">
+            <img src="img/zapatos6.jfif" alt="Moda para Caballeros">
+            <p align="center">Lo más cómodo para tus pequeños</p>
+        </div>
+        <div class="image-item">
+            <img src="img/zapatos7.jfif" alt="Moda para Caballeros">
+            <p align="center">Estilo a la moda para tus niños</p>
+        </div>
+    </div>
+
+    <h2 align="center">Camisas de Damas</h2>
+    <div class="inicio-images">
+        <div class="image-item">
+            <img src="img/camisa1.jfif" alt="Moda para Damas">
+            <p align="center">Lo mejor en moda</p>
+        </div>
+        <div class="image-item">
+            <img src="img/camisa2.jfif" alt="Moda para Damas">
+            <p align="center">La combinación perfecta</p>
+        </div>
+        <div class="image-item">
+            <img src="img/camisa3.jfif" alt="Moda para Damas">
+            <p align="center">Perfecto combina con tu pareja</p>
+        </div>
+        <div class="image-item">
+            <img src="img/camisas4.jfif" alt="Moda para Damas">
+            <p align="center">Perfecto para tus días diarios</p>
+        </div>
+        <div class="image-item">
+            <img src="img/camisa5.jfif" alt="Moda para Damas">
+            <p align="center">Lo más cómodo para tus pequeños</p>
+        </div>
+        <div class="image-item">
+            <img src="img/camisa6.jfif" alt="Moda para Damas">
+            <p align="center">Estilo deportivo</p>
+        </div>
+    </div>
+
+    <h2 align="center">Ropa para Caballeros</h2>
+    <div class="inicio-images">
+        <div class="image-item">
+            <img src="img/hombre1.jfif" alt="Moda para Caballeros">
+            <p align="center">Lo mejor en moda</p>
+        </div>
+        <div class="image-item">
+            <img src="img/hombre2.jfif" alt="Moda para Caballeros">
+            <p align="center">La combinación perfecta</p>
+        </div>
+        <div class="image-item">
+            <img src="img/hombre3.jfif" alt="Moda para Caballeros">
+            <p align="center">Perfecto combina con tu pareja</p>
+        </div>
+        <div class="image-item">
+            <img src="img/hombre4.jfif" alt="Moda para Caballeros">
+            <p align="center">Perfecto para tus días diarios</p>
+        </div>
+        <div class="image-item">
+            <img src="img/camisa7.jfif" alt="Moda para Caballeros">
+            <p align="center">Lo más formal para tus días importantes</p>
+        </div>
+        <div class="image-item">
+            <img src="img/camisa8.jfif" alt="Moda para Caballeros">
+            <p align="center">Estilo clásico</p>
+        </div>
+    </div>
+
+    <h2 align="center">Vestidos para Damas</h2>
+    <div class="inicio-images">
+        <div class="image-item">
+            <img src="img/vestido1.jfif" alt="Moda para Damas">
+            <p align="center">Estilo moderno</p>
+        </div>
+        <div class="image-item">
+            <img src="img/vestido2.jfif" alt="Moda para Damas"><br><br>
+            <p align="center">Frescos para tus días soleados</p>
+        </div>
+        <div class="image-item">
+            <img src="img/vestido3.jfif" alt="Moda para Damas">
+            <p align="center">Perfecto para tus ocasiones especiales</p>
+        </div>
+        <div class="image-item">
+            <img src="img/vestido4.jfif" alt="Moda para Damas">
+            <p align="center">Lo mejor para tus momentos formales</p>
+        </div>
+        <div class="image-item">
+            <img src="img/vestido5.jfif" alt="Moda para Damas"><br><br><br><br><br><br>
+            <p align="center">Estilo a la moda para cualquier ocasión</p>
+        </div>
+        <div class="image-item">
+            <img src="img/vestido6.jfif" alt="Moda para Damas"><br> <br><br><br><br>
+            <p align="center">Estilo fresco</p>
+        </div>
+    </div>
+</section>
+
+<section id="nosotros">
+    <div class="nosotros-container">
+        <div class="nosotros-text">
+            <h2>Sobre Nosotros</h2>
+            <p>
+                Bienvenidos a nuestra tienda de ropa y calzado, donde la moda se encuentra con la calidad y el estilo. Somos una empresa comprometida con ofrecer lo mejor en vestimenta para toda la familia, con una amplia variedad de productos que se adaptan a cada ocasión y necesidad. 
+            </p>
+            <p>
+                En nuestra tienda, creemos en la importancia de vestirse bien y sentirse cómodo al mismo tiempo. Es por eso que trabajamos con las mejores marcas y proveedores para garantizar que nuestros clientes siempre encuentren lo que están buscando. Desde ropa casual hasta atuendos formales, pasando por calzado deportivo y elegante, tenemos todo lo que necesitas para completar tu guardarropa.
+            </p>
+            <p>
+                Nuestro equipo de atención al cliente está siempre disponible para ayudarte a encontrar el producto perfecto, brindándote un servicio personalizado y amigable. Además, estamos comprometidos con la sostenibilidad, por lo que ofrecemos opciones de moda eco-amigable y de comercio justo.
+            </p>
+            <p>
+                Te invitamos a explorar nuestra tienda y descubrir las últimas tendencias en moda para damas, caballeros y niños. ¡Gracias por elegirnos como tu tienda de confianza!
+            </p>
+        </div>
+        <div class="nosotros-image">
+            <img src="img/nosotros.jpg" alt="Nosotros">
+        </div>
+    </div>
+</section>
+<section id="productos">
+    <div class="intro-text">
+        <h1 align="center"> Lo que ofrecemos y sus precios</h1>
+        <h2 align="center">Tenis</h2>
+    </div>
+
+    <div class="inicio-images">
+        <div class="image-item">
+            <img src="img/zapatos.png" alt="Moda para Caballeros">
+            <p align="center">L.3,000.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/zapatos1.png" alt="Moda para Caballeros">
+            <p align="center">L. 3,500.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/zapatos3.jfif" alt="Moda para Caballeros"><br><br><br>
+            <p align="center">L. 1,500.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/zapatos5.jfif" alt="Moda para Caballeros">
+                        <p align="center">L. 1,500.00</p>
+
+            <p align="center"></p>
+        </div>
+        <div class="image-item">
+            <img src="img/zapatos6.jfif" alt="Moda para Caballeros">
+            <p align="center">L. 800.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/zapatos7.jfif" alt="Moda para Caballeros">
+            <p align="center">L. 800.00</p>
+        </div>
+    </div>
+    <h2 align="center">Camisas de Damas</h2>
+    <div class="inicio-images">
+        <div class="image-item">
+            <img src="img/camisa1.jfif" alt="Moda para Damas"><br>
+            <p align="center">L. 500.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/camisa2.jfif" alt="Moda para Damas">
+            <p align="center">L. 500.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/camisa3.jfif" alt="Moda para Damas">
+            <p align="center">L. 500.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/camisas4.jfif" alt="Moda para Damas">
+            <p align="center">L. 400.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/camisa5.jfif" alt="Moda para Damas"><br><br>
+            <p align="center">L. 300.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/camisa6.jfif" alt="Moda para Damas"><br><br><br>
+            <p align="center">L. 700.00</p>
+        </div>
+    </div>
+    <h2 align="center">Ropa para Caballeros</h2>
+    <div class="inicio-images">
+        <div class="image-item">
+            <img src="img/hombre1.jfif" alt="Moda para Caballeros">
+            <p align="center">L. 700.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/hombre2.jfif" alt="Moda para Caballeros">
+            <p align="center">L. 700.00</p>
+        </div>
+       
+        <div class="image-item">
+            <img src="img/hombre4.jfif" alt="Moda para Caballeros">
+            <p align="center">L. 700.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/camisa7.jfif" alt="Moda para Caballeros">
+            <p align="center">L. 700.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/camisa8.jfif" alt="Moda para Caballeros">
+            <p align="center">L. 700.00</p>
+        </div>
+    </div>
+
+    <h2 align="center">Vestidos para Damas</h2>
+    <div class="inicio-images">
+        <div class="image-item">
+            <img src="img/vestido1.jfif" alt="Moda para Damas">
+            <p align="center">L.800.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/vestido2.jfif" alt="Moda para Damas"><br><br>
+            <p align="center">L. 700.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/vestido3.jfif" alt="Moda para Damas">
+            <p align="center">L. 600.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/vestido4.jfif" alt="Moda para Damas">
+            <p align="center">L. 400.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/vestido5.jfif" alt="Moda para Damas"><br><br><br><br><br><br>
+            <p align="center">L. 1,000.00</p>
+        </div>
+        <div class="image-item">
+            <img src="img/vestido6.jfif" alt="Moda para Damas"><br> <br><br><br><br>
+            <p align="center">L. 400.00</p>
+        </div>
+    </div>
+</section>
+<section id="blog">
+    <h2>Blog de Moda</h2>
+    <p>Bienvenido a nuestro blog, donde compartimos las últimas novedades, consejos de estilo y mucho más. ¡Mantente al tanto de todo lo que sucede en el mundo de la moda con nosotros!</p>
+    
+    <!-- Entrada de Blog 1 -->
+    <article>
+        <h3>Las Tendencias de Moda para Otoño 2024</h3>
+        <p>El otoño ha llegado y con él, nuevas tendencias de moda que están marcando el ritmo. Desde colores cálidos hasta tejidos acogedores, descubre cómo actualizar tu guardarropa para esta temporada.</p>
+    </article>
+    
+    
+    <!-- Entrada de Blog 3 -->
+    <article>
+        <h3>Historia de Éxito: Cómo Encontramos la Moda Perfecta para Nuestros Clientes</h3>
+        <p>Conoce a nuestros clientes y descubre cómo nuestros productos han transformado sus vidas. Estas historias muestran el impacto positivo que la moda puede tener en nuestro día a día.</p>
+    </article>
+
+    <!-- Entrada de Blog 4 -->
+    <article>
+        <h3>La Moda Sostenible: Un Paso Hacia un Futuro Más Verde</h3>
+        <p>La moda sostenible es más que una tendencia; es una necesidad. Aprende sobre los esfuerzos de nuestra tienda para ofrecer productos eco-amigables y cómo puedes contribuir a un mundo más verde.</p>
+    </article>
+</section>
+
+<section id="contactanos">
+    <h2>Contáctanos</h2>
+    <div class="contact-container">
+        <div class="contact-form">
+            <h3>Envíanos un Mensaje</h3>
+            <form>
+                <label for="nombre">Nombre:</label><br>
+                <input type="text" id="nombre" name="nombre" required><br><br>
+                <label for="email">Correo Electrónico:</label><br>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="mensaje">Mensaje:</label><br>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea><br><br>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+        <div class="contact-info">
+            <h3>Información de Contacto</h3>
+            <p><strong>Teléfono:</strong> +504 3332 2645</p>
+            <p><strong>Correo Electrónico:</strong> contacto@tiendaEmelin.com</p>
+            <p><strong>Dirección:</strong> Calle Principal Salida hacia Danli, Tegucigalpa, Honduras</p>
+           
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 Tienda de Ropa y Calzado. Todos los derechos reservados.</p>
+    
+</footer>
+
+</body>
+</html>
